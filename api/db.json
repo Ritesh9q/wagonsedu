@@ -1,0 +1,32 @@
+{
+    "courses": [{
+        "id": 1,
+        "title": "Credit Collection and Recovery Skills",
+        "image": "https://wagonseducation.com/uploads/thumbnails/course_thumbnails/course_thumbnail_default_102.jpg",
+        "price": "15999",
+        "discountedprice": "5999"
+    }, 
+    {
+        "id": 2,
+        "title": "Finance For Non Finance Elementary",
+        "image": "https://wagonseducation.com/uploads/thumbnails/course_thumbnails/course_thumbnail_default_103.jpg",
+        "price": "16999",
+        "discountedprice": "7999"
+    },
+     {
+        "id": 3,
+        "title": "Fintech Payment Focus",
+        "image": "https://wagonseducation.com/uploads/thumbnails/course_thumbnails/course_thumbnail_default_104.jpg",
+        "price": "5999",
+        "discountedprice": "999"
+    }, 
+    {
+        "id": 4,
+        "title": "Foreign Exchange Risk Management",
+        "image": "https://wagonseducation.com/uploads/thumbnails/course_thumbnails/course_thumbnail_default_105.jpg",
+        "price": "10999",
+        "discountedprice": "3999"
+    }
+]
+
+}

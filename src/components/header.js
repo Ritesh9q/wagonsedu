@@ -1,8 +1,12 @@
 import "bootstrap-icons/font/bootstrap-icons.css";
 import {Link} from 'react-router-dom';
 import $ from 'jquery';
+import { useSelector } from 'react-redux';
 
 function Header() {
+  const items = useSelector((state)=>state.cart)
+  const whishlistitems = useSelector((state)=>state.whishlist)
+
   $(document).ready(function(){
     $(".dropdown").hover(function(){
         var dropdownMenu = $(this).children(".dropdown-menu");
@@ -128,7 +132,7 @@ if(loggedin){
     </ul>
    
     <i style={{fontSize:'30px'}} class="bi bi-cart"></i>
-    <span class=" top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+    <span class=" top-0 start-100 translate-middle badge rounded-pill bg-danger">{items.length}</span>
      &nbsp;&nbsp;
     <Link style={{border:'1px solid black'}} className="btn btn-default mx-1" to="/login" >Login</Link> 
     <Link className="btn btn-danger" to="/signup">Sign Up</Link>
@@ -196,15 +200,16 @@ if(loggedin){
     </form>
     </ul>
 
-    <Link className="btn shadow-none"  to="#">Instructor</Link>
+    <Link className="btn shadow-none"  to="/become-instructor">Instructor</Link>
     <Link className="btn shadow-none"  to="/my-courses">My Courses</Link> &nbsp;
 
-    <Link style={{color:'black'}} to="shopping-cart"><i style={{fontSize:'30px'}} class="bi bi-heart"></i></Link> 
-    <span class=" top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+  
+    <Link style={{color:'black'}} to="/mytabs/1"><i style={{fontSize:'30px'}} class="bi bi-heart"></i></Link> 
+    <span class=" top-0 start-100 translate-middle badge rounded-pill bg-danger">{whishlistitems.length}</span>
      &nbsp;&nbsp;
    
     <Link style={{color:'black'}} to="shopping-cart"><i style={{fontSize:'30px'}} class="bi bi-cart"></i></Link> 
-    <span class=" top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+    <span class=" top-0 start-100 translate-middle badge rounded-pill bg-danger">{items.length}</span>
      &nbsp;&nbsp;
     {/* <Link style={{border:'1px solid black'}} className="btn btn-default mx-1" to="/login" >Login</Link> 
     <Link className="btn btn-danger" to="/signup">Sign Up</Link> */}
@@ -286,7 +291,7 @@ if(!loggedin){
     </ul>
    
     <i style={{fontSize:'30px'}} class="bi bi-cart"></i>
-    <span class=" top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+    <span class=" top-0 start-100 translate-middle badge rounded-pill bg-danger">{items.length}</span>
      &nbsp;&nbsp;
     <Link style={{border:'1px solid black'}} className="btn btn-default mx-1" to="/login" >Login</Link> 
     <Link className="btn btn-danger" to="/signup">Sign Up</Link>
@@ -357,7 +362,7 @@ if(!loggedin){
 
    
     <Link style={{color:'black'}} to="shopping-cart"><i style={{fontSize:'30px'}} class="bi bi-cart"></i></Link> 
-    <span class=" top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+    <span class=" top-0 start-100 translate-middle badge rounded-pill bg-danger">{items.length}</span>
      &nbsp;&nbsp;
     <Link style={{border:'1px solid black'}} className="btn btn-default mx-1" to="/login" >Login</Link> 
     <Link className="btn btn-danger" to="/signup">Sign Up</Link>

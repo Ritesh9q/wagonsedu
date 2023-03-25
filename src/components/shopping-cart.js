@@ -1,4 +1,26 @@
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { remove } from "../store/cartSlice";
+
+
 function ShoppingCart(){
+  const courses = useSelector(state=>state.cart)
+  const dispatch = useDispatch();
+
+
+
+  const handleRemove = (productId)=>{
+    dispatch(remove(productId))
+}
+
+const totalPrice = courses.reduce((acc, course) => {
+  return acc + parseInt(course.discountedprice);
+}, 0);
+
+const discountPrice = courses.reduce((acc, course) => {
+  return acc + parseInt(course.price);
+}, 0);
+
     return(
       <div style={{backgroundColor:'#f1f7f8'}}>
 
@@ -17,8 +39,30 @@ function ShoppingCart(){
         <div className="container">
             <div className="row">
                 <div className="col-lg-9">
-                    <h4>1 Courses in Cart</h4> 
-                    <div class="card mt-1 border-0 radius-10 shadow-lg">
+                    <h4>{courses.length} Courses in Cart</h4> 
+
+                    {courses.map((course)=>(
+
+                      <div class="card mt-1 border-0 radius-10 shadow-lg">
+                      <div class="card-body">
+                      <img style={{marginRight:'20px'}} src={course.image}  class="img-fluid rounded program-img float-start" alt="..." />
+                          <div >
+                          <h5  class="card-title">{course.title}<span onClick={()=>handleRemove(course.id)} style={{fontSize:'16px',marginLeft:'40px'}}><i class="bi bi-x-circle"></i> Remove </span>   <span style={{fontSize:'20px',float:'right'}}>₹{course.discountedprice}</span></h5>
+                          <p class="card-text">Updated Wed, 02-Nov-2022 <span style={{fontSize:'15px',float:'right'}}><strike>₹{course.price}</strike></span></p>
+                          </div>
+                          </div>
+                      </div>
+
+                    ))
+                    }
+
+
+
+               
+                
+
+
+                    {/* <div class="card mt-1 border-0 radius-10 shadow-lg">
                     <div class="card-body">
                     <img style={{marginRight:'20px'}} src="https://wagonseducation.com/uploads/thumbnails/course_thumbnails/course_thumbnail_default_103.jpg"  class="img-fluid rounded program-img float-start" alt="..." />
                         <div >
@@ -26,14 +70,14 @@ function ShoppingCart(){
                         <p class="card-text">Updated Wed, 02-Nov-2022 <span style={{fontSize:'15px',float:'right'}}><strike>₹15999</strike></span></p>
                         </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="col-lg-3">
                 <h4>Total:</h4> 
                 <div class="card mt-1 border-0 radius-10 shadow-lg">
                     <div class="card-body">
-                        <div style={{color:'#ec5252',fontWeight:700,fontSize:'30px'}}>₹7999</div>
-                        <div><strike>₹15999</strike></div>
+                        <div style={{color:'#ec5252',fontWeight:700,fontSize:'30px'}}>₹{totalPrice}</div>
+                        <div><strike>₹{discountPrice}</strike></div>
                      
                         <br/>
 

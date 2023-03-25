@@ -16,21 +16,24 @@ import ContactUs from "./components/contact-us";
 import UpcomingPrograms from "./components/upcoming-programs";
 import ShoppingCart from "./components/shopping-cart";
 import MyCourses from "./components/my-courses";
-  
+import Lesson from "./components/lesson"; 
+import BecomeInstructor from "./components/become-instructor";
+import Dashboard from "./components/dashboard";
+import { Provider } from 'react-redux';
+import store from './store/store';
 
 function App() {
   return (
    
     <div className="App"> 
-      
-
+      <Provider store={store}>
        <BrowserRouter>
        <Header/>
         <Routes>
           <Route path="/" element={<Home/>}></Route>
           <Route path="/login" element={<Login/>}></Route>
           <Route path="/signup" element={<SignUp/>}></Route>
-          <Route path="/course-details" element={<CourseDetails/>}></Route>
+          <Route path="/course-details/:id" element={<CourseDetails/>}></Route>
           <Route path="/open-program" element={<OpenProgram/>}></Route>
           <Route path="/blogs" element={<Blogs/>}></Route>
           <Route path="/blog-details" element={<BlogDetails/>}></Route>
@@ -40,10 +43,16 @@ function App() {
           <Route path="/upcoming-programs" element={<UpcomingPrograms/>}></Route>
           <Route path ="/shopping-cart" element={<ShoppingCart/>}></Route>
           <Route path ="/my-courses" element={<MyCourses/>}></Route>
+          <Route path ="/lesson" element={<Lesson/>}></Route>
+          <Route path="/mytabs/:tabIndex" element={<MyCourses/>} />
+          <Route path ="/become-instructor" element={<BecomeInstructor/>}></Route>
+          <Route path ="/instructor-dashboard" element={<Dashboard/>}></Route>
+
 
         </Routes>
         <Footer/>
        </BrowserRouter>
+       </Provider>
     
     </div>
   );

@@ -1040,3 +1040,12 @@ a {
     opacity: 1;
     visibility: visible;
 }
+
+.nav-link.active {
+    background-color: #000 !important;
+    color: #fff !important;
+  }
+
+  .nav-tabs.nav-link.active {
+    border: none !important;
+  }

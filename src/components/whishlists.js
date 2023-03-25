@@ -1,5 +1,14 @@
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { removew } from "../store/whishlistSlice";
 
 function Whishlists(){
+    const courses = useSelector(state=>state.whishlist)
+   const dispatch = useDispatch();
+
+    const handleRemove = (productId)=>{
+        dispatch(removew(productId))
+    }
 
     return(
         <div>
@@ -20,27 +29,33 @@ function Whishlists(){
             </div>
 
             <div className="row">
-                <div className="col-lg-3">
+                
+                    {courses.map((course)=>(
 
-                  <div class="card mt-1 border-0 radius-10 shadow-lg">
-                    <div class="card-body">
-                    <img src="https://wagonseducation.com/uploads/thumbnails/course_thumbnails/course_thumbnail_default_102.jpg" class="card-img-top" alt="..."/>
-                    <br/><br/>
+<div className="col-lg-3">
 
-                   <b>First Time Program Manager</b> <br/>
-                   John Doe <br/>
-                       
-                    <span style={{float:'right'}}><strike>₹15999</strike> &nbsp;<b>₹7400</b></span>
-                       
+                        <div class="card mt-1 border-0 radius-10 shadow-lg">
+                        <div class="card-body">
+                        <img src={course.image} class="card-img-top" alt="..."/>
+                        <br/><br/>
 
-                       <br/><br/> 
+                        <b>{course.title}</b> <br/>
+                        John Doe <br/>
                         
+                        <button onClick={()=>handleRemove(course.id)} style={{fontSize:'16px',marginTop:'10px',border:'none',background:'white'}}><i class="bi bi-x-circle"></i> Remove </button>
+                        <span style={{float:'right'}}><strike>₹15999</strike> &nbsp;<b>₹7400</b></span>
+                        <br/><br/>  
+                        </div>
+                        </div>
+                        </div>
 
-                        
-                    </div>
-                  </div>
+                    ))
 
-                </div>
+                    }
+
+
+
+              
                 <div className="col-lg-3"></div>
 <div className="col-lg-3">
 

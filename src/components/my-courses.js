@@ -3,14 +3,15 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import PurchasedCourses from './purchased-courses';
 import Whishlists from './whishlists';
+import UserProfile from './user-profile';
+import PurchaseHistory from './purchase-history';
+import Messages from './messages';
+// import { useParams } from 'react-router-dom';
 
 function MyCourses(){
 
-    const [activeIndex, setActiveIndex] = useState(null);
-
-    const handleClick = (index) => {
-        setActiveIndex(index);
-      };
+    // const { tabIndex } = useParams();
+    // const selectedIndex = parseInt(tabIndex) || 0;
 
 
     return(
@@ -23,7 +24,7 @@ function MyCourses(){
                 <br/>
                 <h1 class="page-title print-hidden">My courses</h1>
                 <ul class="print-hidden">
-                <Tabs selectedTabClassName="active">
+                <Tabs selectedTabClassName="active" >
                     <TabList>
                         
                     <Tab><li><a href="#">Courses</a></li></Tab>
@@ -39,13 +40,13 @@ function MyCourses(){
                     <Whishlists/>
                     </TabPanel>
                     <TabPanel>
-                    <h2>Any content 3</h2>
+                    <Messages/>
                     </TabPanel>
                     <TabPanel>
-                    <h2>Any content 4</h2>
+                    <PurchaseHistory/>
                     </TabPanel>
                     <TabPanel>
-                    <h2>Any content 5</h2>
+                    <UserProfile/> 
                     </TabPanel>
                     
                 </Tabs>

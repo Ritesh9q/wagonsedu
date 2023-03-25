@@ -1,12 +1,62 @@
+import React, { useEffect, useState } from 'react'
+import { add } from '../store/cartSlice';
+import { addw } from '../store/whishlistSlice';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { animateScroll } from 'react-scroll';
+
+
 
 function CourseDetails(){
+  const { id } = useParams();
+
+  const [course,setCourse] = useState([]);
+
+     const dispatch = useDispatch();
+
+    useEffect(()=>{
+
+      function gotop(){
+
+        animateScroll.scrollTo(document.querySelector('#top'), {
+          duration: 0,
+          smooth: true,
+        });
+      }
+
+
+       const fetchProducts = async() =>{
+         const res = await fetch(`http://localhost:8000/courses/${id}`);
+         const data =await res.json();
+         console.log(data);
+         setCourse(data)
+       }
+       
+       fetchProducts();
+       gotop();
+
+    },[])
+    
+   const handleAdd = (course)=>{
+          dispatch(add(course));
+   }
+   const handleAddtoWhishlist = (course)=>{
+     dispatch(addw(course));
+
+}
+
     return(
-     <div  style={{backgroundColor:'#f1f7f8'}}>
+     <div id='top'  style={{backgroundColor:'#f1f7f8'}}>
        <div style={{backgroundColor:'#29303b'}}>
         <div  className="container">
          <div className="row">
-            <div style={{color:'white',marginTop:'30px'}} className="col-lg-8 col-md-8">
-              <h1>Credit Collection  and Recovery Skills</h1>
+         <div style={{color:'white',marginTop:'30px'}} className="col-lg-8 col-md-8">
+          {
+              <h1>{course.title}</h1>
+
+          }
+           
+              
               <p>Credit Collection and Recovery Skills - Level 2</p>
               <p>
                 Batch 1 : 6th Nov (Sun: 10am - 1pm, 2pm - 5pm) <br/>
@@ -21,7 +71,6 @@ function CourseDetails(){
                 <i style={{color:'yellow'}} class="bi bi-star-fill"></i>&nbsp;
                 <i style={{color:'yellow'}} class="bi bi-star-fill"></i>&nbsp;
                 (5)
-                {/* <i style={{color:'yellow'}} class="bi bi-star"></i> */}
                 &nbsp;<span style={{fontSize:'13px'}}>(94 Reviews)</span>
             </div>
             <br/>
@@ -36,8 +85,8 @@ function CourseDetails(){
                     <span style={{fontSize:'20px'}}><strike>₹15999</strike></span> &nbsp;<b>₹7400</b>
                     </h1>
                  
-                    <button style={{width:'100%'}} className="btn btn-outline-danger mb-1">Add to Wishlist</button><br/>
-                    <button style={{width:'100%'}} className="btn btn-outline-success">Add to Cart</button>
+                    <button onClick={()=>handleAddtoWhishlist(course)}  style={{width:'100%'}} className="btn btn-outline-danger mb-1">Add to Wishlist</button><br/>
+                    <button onClick={()=>handleAdd(course)} style={{width:'100%'}} className="btn btn-outline-success">Add to Cart</button>
                 </div>
               </div>
 

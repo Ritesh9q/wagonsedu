@@ -1,4 +1,6 @@
 
+import { Link } from "react-router-dom";
+
 function PurchasedCourses(){
 
     return(
@@ -49,11 +51,11 @@ function PurchasedCourses(){
                        <br/><br/> 
                         
 
-                        <div class="d-grid gap-2">
-                           <button style={{backgroundColor:'#ec5252',color:'white'}} class="btn" type="button">Course Details</button>
-                           <button style={{backgroundColor:'#ec5252',color:'white'}} class="btn" type="button">Start Lesson</button>
+                       <div class="d-grid gap-2">
+         <Link to="/course-details" style={{backgroundColor:'#ec5252',color:'white'}} class="btn" type="button">Course Details</Link>
+         <Link to="/lesson" style={{backgroundColor:'#ec5252',color:'white'}} class="btn" type="button">Start Lesson</Link>
 
-                        </div>
+      </div>
                     </div>
                   </div>
 
@@ -87,9 +89,9 @@ function PurchasedCourses(){
      <br/><br/> 
       
 
-      <div class="d-grid gap-2">
-         <button style={{backgroundColor:'#ec5252',color:'white'}} class="btn" type="button">Course Details</button>
-         <button style={{backgroundColor:'#ec5252',color:'white'}} class="btn" type="button">Start Lesson</button>
+     <div class="d-grid gap-2">
+         <Link to="/course-details" style={{backgroundColor:'#ec5252',color:'white'}} class="btn" type="button">Course Details</Link>
+         <Link to="/lesson" style={{backgroundColor:'#ec5252',color:'white'}} class="btn" type="button">Start Lesson</Link>
 
       </div>
   </div>
@@ -126,8 +128,8 @@ function PurchasedCourses(){
       
 
       <div class="d-grid gap-2">
-         <button style={{backgroundColor:'#ec5252',color:'white'}} class="btn" type="button">Course Details</button>
-         <button style={{backgroundColor:'#ec5252',color:'white'}} class="btn" type="button">Start Lesson</button>
+         <Link to="/course-details" style={{backgroundColor:'#ec5252',color:'white'}} class="btn" type="button">Course Details</Link>
+         <Link to="/lesson" style={{backgroundColor:'#ec5252',color:'white'}} class="btn" type="button">Start Lesson</Link>
 
       </div>
   </div>
@@ -163,9 +165,9 @@ function PurchasedCourses(){
      <br/><br/> 
       
 
-      <div class="d-grid gap-2">
-         <button style={{backgroundColor:'#ec5252',color:'white'}} class="btn" type="button">Course Details</button>
-         <button style={{backgroundColor:'#ec5252',color:'white'}} class="btn" type="button">Start Lesson</button>
+     <div class="d-grid gap-2">
+         <Link to="/course-details" style={{backgroundColor:'#ec5252',color:'white'}} class="btn" type="button">Course Details</Link>
+         <Link to="/lesson" style={{backgroundColor:'#ec5252',color:'white'}} class="btn" type="button">Start Lesson</Link>
 
       </div>
   </div>
